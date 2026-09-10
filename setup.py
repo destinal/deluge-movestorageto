@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 __plugin_name__ = "MoveStorageTo"
 __author__ = "destinal"
-__version__ = "0.2"
+__version__ = "0.3"
 __description__ = "Move torrent storage to a media folder from the context menu."
 __license__ = "GPLv3"
 

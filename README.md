@@ -1,7 +1,7 @@
 # MoveStorageTo
 
 A Deluge 1.3 plugin that adds a **Move Storage To** submenu to the torrent
-right-click menu in the web UI, listing the folders under `~/media` by name.
+right-click menu in the web UI, listing the folders under a configurable media root by name.
 Selecting one calls the same `core.move_storage` RPC as the built-in
 "Move Storage" dialog, without the dialog.
 
@@ -21,9 +21,15 @@ The submenu makes a bad destination unrepresentable.
     movestorageto/webui.py   runs in deluge-web; registers the script
     movestorageto/data/movestorageto.js   the submenu and the move call
 
-The folder list is read at runtime, so new directories under `~/media` appear
-without editing the plugin. Only the bare name is shown; the full path is
-rebuilt at click time.
+The folder list is read at runtime, so new directories appear without editing
+the plugin. Only the bare name is shown; the full path is rebuilt at click time.
+
+## Configuration
+
+Preferences -> Move Storage To -> **Media root** (default `~/media`). Every
+immediate subdirectory of that path becomes a submenu entry. `~` is expanded
+on the server. The setting is stored in `~/.config/deluge/movestorageto.conf`
+and takes effect the next time the submenu is opened, with no reload.
 
 A core component is required even though the feature is entirely web-side:
 deluge-web takes its enabled-plugin list from the daemon
